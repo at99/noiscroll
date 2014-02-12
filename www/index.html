@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Touch scroll in iOS 5</title>
+		<style>
+			* {margin: 0; padding: 0;}
+			
+			body{
+				font-family: sans-serif;
+				font-size: 1.3em;
+			}
+			
+			[role="banner"]{
+				background-color: #eee;
+				padding: 0.3em 1em;
+			}
+			
+			footer{
+				text-align: center;
+				font-style: italic;
+			}
+			
+			#list{
+				font-size: 1.1em;
+				height: 500px;
+				overflow-y: scroll;
+				-webkit-overflow-scrolling: touch;
+			}
+			#list li{
+				border-bottom: 1px solid #e7e7e7;
+				padding: 0.6em 0.3em;
+			}
+			
+			li.over{
+				color: #fff;
+				background-color: blue;
+			}
+			
+		</style>
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", buildList, false);
+			
+			function buildList(){
+				var list = document.getElementById("list"),
+					frag = document.createDocumentFragment();
+			
+				for(var i = 0; i < 40; i++){
+					var elem = document.createElement("li");
+					elem.innerHTML = "Element " + i;
+					frag.appendChild(elem);
+				}
+			
+				list.appendChild(frag);
+			}
+			
+		</script>
+	</head>
+	<body>
+		<header role="banner">
+			<h1>This is a header</h1>
+		</header>
+		
+		<div role="main">
+			<ul id="list"></ul>
+		</div>
+		
+		<footer>
+			<small>This is a footer</small>
+		</footer>
+	</body>
+</html>
